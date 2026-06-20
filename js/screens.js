@@ -84,7 +84,7 @@ export function screenRecipientName() {
       <div class="mini-orb o1">💛</div>
       <div class="mini-orb o2">🌸</div>
       <div class="mini-orb ocenter">✨</div>
-      <div class="mini-orb o3">🕊️</div>
+      <div class="mini-orb o3">🫀</div>
       <div class="mini-orb o4">🌙</div>
     </div>
     <label class="field-label" for="nameInput">Who's this for?</label>
@@ -275,7 +275,7 @@ export function screenOrbs() {
   const blur = blurLevels[state.orb.count];
   const quoteText = vibe.orbLines[Math.max(0, Math.min(state.orb.count - 1, 3))] || vibe.orbLines[0];
   const photoSrc = state.card.photos[0] || null;
-  const icons = ['💛', '✨', '🌸', '🕊️'];
+  const icons = ['💛', '✨', '🌸', '🫀'];
   const positions = ['p1', 'p2', 'p3', 'p4'];
 
   const orbsHtml = [0, 1, 2, 3].map((i) => {
