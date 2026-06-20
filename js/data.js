@@ -23,7 +23,7 @@ export const VIBES = {
       "The world's better with you in it."
     ],
     templates: [
-      'No reason, no occasion, {name} — just wanted you to know you crossed my mind today, and it made everything a little better.',
+      'No reason, no occasion, {name} just wanted you to know you crossed my mind today, and it made everything a little better.',
       "A tiny reminder, completely unprompted, {name}: you're doing better than you think, and you're loved more than you know."
     ]
   },
@@ -91,7 +91,7 @@ export const VIBES = {
     orbLines: [
       'This is overdue.',
       'But I mean every word.',
-      'Thank you —',
+      'Thank you ',
       'for being exactly who you are.'
     ],
     templates: [
@@ -109,7 +109,7 @@ export const VIBES = {
     orbLines: [
       "It's quieter without you.",
       'I keep noticing the gaps.',
-      'Just wanted you to know —',
+      'Just wanted you to know ',
       "you're on my mind."
     ],
     templates: [
@@ -123,7 +123,7 @@ export const RELATIONSHIPS = {
   friend: {
     label: 'Friend', sub: 'Close friend', emoji: '🤝',
     eyebrow: 'TO MY PERSON', eyebrowSmall: 'For a friend',
-    sign: '— your person, no matter what'
+    sign: ' your person, no matter what'
   },
   partner: {
     label: 'Partner', sub: 'Girlfriend / boyfriend', emoji: '💞',
