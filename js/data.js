@@ -122,17 +122,17 @@ export const VIBES = {
 export const RELATIONSHIPS = {
   friend: {
     label: 'Friend', sub: 'Close friend', emoji: '🤝',
-    eyebrow: 'TO MY PERSON', eyebrowSmall: 'For a friend',
+    eyebrow: 'TO MY FRIEND', eyebrowSmall: 'For a friend',
     sign: ' your person, no matter what'
   },
   partner: {
     label: 'Partner', sub: 'Girlfriend / boyfriend', emoji: '💞',
-    eyebrow: 'TO MY EVERYTHING', eyebrowSmall: 'For my partner',
+    eyebrow: 'TO MY WORLD', eyebrowSmall: 'For my partner',
     sign: 'All my heart, always'
   },
   spouse: {
     label: 'Spouse', sub: 'Wife / husband', emoji: '💍',
-    eyebrow: 'TO MY FOREVER', eyebrowSmall: 'For my person',
+    eyebrow: 'TO MY EVERYTHING', eyebrowSmall: 'For my person',
     sign: 'Forever your person'
   },
   date: {
