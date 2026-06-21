@@ -9,7 +9,7 @@
 import { VIBES, RELATIONSHIPS } from './data.js';
 import { state } from './state.js';
 import { escapeHtml, formatTime, substituteName, isLocalOrigin } from './utils.js';
-import { buildShareLink } from './link.js';
+import { buildShareLink, buildShortLink } from './link.js';
 import { storageMode } from './storage.js';
 
 /* ---------------------------------------------------------------- */
@@ -223,24 +223,30 @@ export function screenMessage() {
 /* Step 6 — Share                                                    */
 /* ---------------------------------------------------------------- */
 export function screenShare() {
-  const link = buildShareLink(state.card);
   const cloudReady = storageMode !== 'local-browser';
+  const link = cloudReady ? buildShortLink(state.card.id) : buildShareLink(state.card);
+
   const localWarning = isLocalOrigin() ? `
     <div class="inline-notice">⚠️ This is running on a local address (${escapeHtml(window.location.hostname || 'file://')}) —
     any link or code generated here will only open on this computer. Deploy it (e.g. GitHub Pages) and
     generate the card from the live URL to actually share it with someone.</div>` : '';
 
+  const setupNudge = (!cloudReady && !isLocalOrigin()) ? `
+    <div class="inline-notice">💡 The code only opens on this device right now. Set up Firebase (free, ~10 min —
+    see README) so the code and a short link both work for anyone, anywhere, voice note included.</div>` : '';
+
   const codeBlock = `
     <div class="code-display surface">
-      <span class="code-label">${cloudReady ? 'Your code' : 'Same-device code'}</span>
+      <span class="code-label">Your code</span>
       <span class="code-value" id="shareCodeValue">${state.card.id}</span>
       <button class="btn ${cloudReady ? 'btn-primary' : 'btn-ghost'}" data-action="copyCode">Copy code</button>
+      ${!cloudReady ? '<span class="code-caveat">Only opens on this device for now</span>' : ''}
     </div>`;
 
   const linkBlock = `
     <button class="btn ${cloudReady ? 'btn-ghost' : 'btn-primary'}" data-action="copyLink" id="copyLinkBtn">Copy link 🔗</button>
     <p class="link-note">${cloudReady
-      ? "Works without the code too — carries everything except the voice note."
+      ? "A short link — works anywhere, photos and voice note included."
       : "Carries the message and photos with it. Voice notes currently only play back on this same device."}</p>`;
 
   return `
@@ -251,10 +257,11 @@ export function screenShare() {
       <h1 class="title">It's ready for ${escapeHtml(state.card.name)}.</h1>
       <p class="subtitle">${cloudReady
         ? "Give them this code, or send the link — either works on any device."
-        : "Send the link — it opens straight to their card on any device."}</p>
+        : "Send the link below — it works right now, anywhere."}</p>
     </div>
 
     ${localWarning}
+    ${setupNudge}
     ${cloudReady
       ? `${codeBlock}<div style="height:14px"></div>${linkBlock}`
       : `${linkBlock}${codeBlock}`}
