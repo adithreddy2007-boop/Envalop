@@ -49,6 +49,20 @@ export function buildShareLink(card) {
   return url.toString();
 }
 
+/**
+ * Builds a short link that just points at the stored card by its code
+ * (?card=CODE) instead of embedding the data. Only meaningful once a real
+ * shared backend is configured (see storage.js) — otherwise the code it
+ * points to won't exist anywhere the recipient's browser can read it.
+ */
+export function buildShortLink(code) {
+  const url = new URL(window.location.href);
+  url.hash = '';
+  url.search = '';
+  url.searchParams.set('card', code);
+  return url.toString();
+}
+
 /** Reads & decodes card data from the current URL's hash, if present. */
 export function readCardFromLink() {
   const hash = window.location.hash || '';
