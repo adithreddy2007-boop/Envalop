@@ -34,6 +34,23 @@ export function debounce(fn, ms) {
   };
 }
 
+/**
+ * True if the page is being served from somewhere only this machine can
+ * reach (Live Server, file://, a bare localhost/127.0.0.1, or a private
+ * LAN IP). Links generated from a local address will never open on
+ * someone else's device — there's nothing wrong with the link itself,
+ * the address it's built from just isn't reachable from outside.
+ */
+export function isLocalOrigin() {
+  const host = window.location.hostname;
+  if (!host) return true; // file:// has no hostname at all
+  if (host === 'localhost' || host === '127.0.0.1' || host === '::1') return true;
+  if (/^192\.168\.\d{1,3}\.\d{1,3}$/.test(host)) return true;
+  if (/^10\.\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(host)) return true;
+  if (/^172\.(1[6-9]|2\d|3[01])\.\d{1,3}\.\d{1,3}$/.test(host)) return true;
+  return false;
+}
+
 /** Replaces every {name} token in a template string with the given name. */
 export function substituteName(template, name) {
   const safeName = (name || '').trim() || 'them';
