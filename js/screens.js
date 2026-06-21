@@ -8,7 +8,7 @@
 
 import { VIBES, RELATIONSHIPS } from './data.js';
 import { state } from './state.js';
-import { escapeHtml, formatTime, substituteName } from './utils.js';
+import { escapeHtml, formatTime, substituteName, isLocalOrigin } from './utils.js';
 import { buildShareLink } from './link.js';
 import { storageMode } from './storage.js';
 
@@ -225,6 +225,10 @@ export function screenMessage() {
 export function screenShare() {
   const link = buildShareLink(state.card);
   const cloudReady = storageMode !== 'local-browser';
+  const localWarning = isLocalOrigin() ? `
+    <div class="inline-notice">⚠️ This is running on a local address (${escapeHtml(window.location.hostname || 'file://')}) —
+    any link or code generated here will only open on this computer. Deploy it (e.g. GitHub Pages) and
+    generate the card from the live URL to actually share it with someone.</div>` : '';
 
   const codeBlock = `
     <div class="code-display surface">
@@ -250,6 +254,7 @@ export function screenShare() {
         : "Send the link — it opens straight to their card on any device."}</p>
     </div>
 
+    ${localWarning}
     ${cloudReady
       ? `${codeBlock}<div style="height:14px"></div>${linkBlock}`
       : `${linkBlock}${codeBlock}`}
