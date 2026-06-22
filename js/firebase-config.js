@@ -23,12 +23,12 @@
  */
 
 export const firebaseConfig = {
-  apiKey: 'YOUR_API_KEY',
-  authDomain: 'YOUR_PROJECT.firebaseapp.com',
-  projectId: 'YOUR_PROJECT_ID',
-  storageBucket: 'YOUR_PROJECT.appspot.com',
-  messagingSenderId: 'YOUR_SENDER_ID',
-  appId: 'YOUR_APP_ID'
+  apiKey: "AIzaSyA1v1NxS6SV7IvJxmpFrfRYMHaIcFIuXzU",
+  authDomain: "dearly-1f0e5.firebaseapp.com",
+  projectId: "dearly-1f0e5",
+  storageBucket: "dearly-1f0e5.firebasestorage.app",
+  messagingSenderId: "113655331756",
+  appId: "1:113655331756:web:2e2667f5f0325e554a5809"
 };
 
 /**
