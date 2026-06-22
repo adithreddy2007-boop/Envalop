@@ -31,9 +31,4 @@ export const firebaseConfig = {
   appId: "1:113655331756:web:2e2667f5f0325e554a5809"
 };
 
-/**
- * The public URL of your open.html page.
- * This is what gets copied alongside the code on the share screen.
- * Update this to match wherever you've deployed open.html.
- */
 export const OPEN_PAGE_URL = 'https://adithreddy2007-boop.github.io/Envaloop/';
